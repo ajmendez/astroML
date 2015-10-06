@@ -73,9 +73,9 @@ def query_plate_mjd_fiber(n_spectra,
 
     res = np.zeros((n_spectra, 3), dtype=int)
 
-    for i, line in enumerate(output[1:]):
+    for i, line in enumerate(output[2:]):
         try:
-            res[i] = map(int, line.strip().split(','))
+            res[i] = list(map(int, line.decode().strip().split(',')))
         except:
             raise ValueError('\n'.join(output))
 
